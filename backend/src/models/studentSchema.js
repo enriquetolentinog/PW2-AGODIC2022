@@ -13,9 +13,10 @@ const StudentSchema = mongoose.Schema({
     materias: {
         type: Array
     },
-    direccion: {
-        type: Number
-    }
+    school: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "school"
+    }]
 });
 
 const Student = mongoose.model("student", StudentSchema);
