@@ -11,5 +11,6 @@ router.delete("/student/:id", student_controller.student_delete);
 
 router.get("/student", student_controller.student_getAll);
 router.get("/student/:id", student_controller.student_getById);
+router.get("/promedio/student/:id", student_controller.student_promedio)
 
 module.exports = router;
