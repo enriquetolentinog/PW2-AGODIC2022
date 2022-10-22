@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StudentForm from "./Form";
 
 const studentInit = {
@@ -7,13 +7,19 @@ const studentInit = {
   edad: 0,
 };
 
-export default function StudentCreate() {
+export default function UpdateStudent() {
   const [student, setStudent] = useState(studentInit);
+
+  useEffect(() => {
+    // obtener el id desde la url
+    // Consultar al estudiante de la base de datos
+  }, []);
+
   const guardar = (event) => {
     event.preventDefault();
 
-    // guardar la info
-    console.log(student);
+    // guardar la info actualizar
+    console.log("guardando en Actualizar",student);
   };
 
   const handleChange = (event) => {
@@ -29,7 +35,7 @@ export default function StudentCreate() {
 
   return (
     <StudentForm
-      titulo={"Crear estudiante"}
+      titulo={"Actulizar estudiante"}
       handleChange={handleChange}
       handleSubmit={guardar}
       student={student}
