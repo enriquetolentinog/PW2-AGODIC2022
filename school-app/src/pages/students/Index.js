@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import {getStudents} from '../../services/StudentService';
 
 export default function Students(props) {
-  return (
-    <div>
-      Students
-    </div>
-  )
+
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await getStudents();
+      setStudents(res);
+    }
+    fetchData();
+    
+  }, [])
+
+  return <div>Students</div>;
 }

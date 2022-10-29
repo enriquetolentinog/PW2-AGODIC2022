@@ -4,23 +4,15 @@ const School = require("../models/schoolSchema");
 exports.student_create = async (req, res) => {
   const { body: student } = req;
 
+  edad: 20
   const studentDB = new Student(student);
-  const err = await studentDB.validate();
-
-  if(err.errors) {
-    // Retornar un error
-  }
-  else {
-    //guardar
-  }
-
   await studentDB.save().catch((err) => console.log("UPS!", err));
 
-  const schoolDB = School.findOne({ _id: studentDB.school });
-  const schoolSaved = School.findOneAndUpdate(
-    { _id: studentDB.school },
-    { students: [...schoolDB.students, studentDB._id] }
-  );
+  // const schoolDB = School.findOne({ _id: studentDB.school });
+  // const schoolSaved = School.findOneAndUpdate(
+  //   { _id: studentDB.school },
+  //   { students: [...schoolDB.students, studentDB._id] }
+  // );
 
   res.send({
     message: "Estudiante creado con exito",

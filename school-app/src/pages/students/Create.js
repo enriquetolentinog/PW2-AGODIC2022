@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StudentForm from "./Form";
+import { createStudent } from "../../services/StudentService";
 
 const studentInit = {
   nombre: "",
@@ -9,11 +10,11 @@ const studentInit = {
 
 export default function StudentCreate() {
   const [student, setStudent] = useState(studentInit);
-  const guardar = (event) => {
+  const guardar = async (event) => {
     event.preventDefault();
 
-    // guardar la info
-    console.log(student);
+    const res = await createStudent(student);
+    console.log(res);
   };
 
   const handleChange = (event) => {
@@ -23,8 +24,6 @@ export default function StudentCreate() {
       ...student,
       [name]: value,
     });
-
-    console.log(student);
   };
 
   return (
