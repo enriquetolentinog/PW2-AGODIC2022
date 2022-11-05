@@ -9,6 +9,8 @@ import StudentCreate from "./pages/students/Create";
 import Abuelo from "./pages/params/Abuelo";
 import Footer from "./components/Footer";
 import UpdateStudent from "./pages/students/Update";
+import LoginButton from "./components/LoginButton";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -16,13 +18,22 @@ function App() {
       <NavBar title="School App">
         <MenuContent />
       </NavBar>
+      <LoginButton />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/params" element={<Abuelo />} />
-        <Route exact path="/students" element={<Students />} /> {/** consulta todos */}
-        <Route exact path="/students/:id" element={<StudentsInfo />} /> {/** consulta uno */}
-        <Route exact path="/create/students" element={<StudentCreate />} /> {/** agregar uno */}
-        <Route exact path="/update/students/:id" element={<UpdateStudent />} /> {/** agregar uno */}
+        <Route exact path="/students" element={<Students />} />{" "}
+        {/** consulta todos */}
+        <PrivateRoute exact path="/students/:id" element={<StudentsInfo />} />{" "}
+        {/** consulta uno */}
+        <PrivateRoute exact path="/create/students" element={<StudentCreate />} />{" "}
+        {/** agregar uno */}
+        <Route
+          exact
+          path="/update/students/:id"
+          element={<UpdateStudent />}
+        />{" "}
+        {/** agregar uno */}
       </Routes>
       <Footer />
     </>
