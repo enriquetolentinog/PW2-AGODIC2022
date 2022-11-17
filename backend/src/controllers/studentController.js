@@ -63,9 +63,9 @@ exports.student_delete = async (req, res) => {
 };
 
 exports.student_getAll = async (req, res) => {
-  const data = await Student.find().populate("school");
+  const data2 = await Student.find().populate("school");
 
-  res.send(data);
+  res.send(data2);
 };
 
 exports.student_getById = async (req, res) => {

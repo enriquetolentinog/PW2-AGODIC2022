@@ -14,5 +14,25 @@ export default function Students(props) {
     
   }, [])
 
-  return <div>Students</div>;
+  return (
+    <>
+    <h1>Students</h1>
+    <table>
+      <th>
+        <td>Nombre</td>
+        <td>Apellido</td>
+        <td>Edad</td>
+      </th>
+      {students.map((student) => {
+        return (
+          <tr>
+            <td>{student.nombre}</td>
+            <td>{student.apellido}</td>
+            <td>{student.edad}</td>
+          </tr>
+        )
+      })}
+    </table>
+    </>
+  )
 }
