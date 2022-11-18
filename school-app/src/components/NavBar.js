@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import education from "../img/education.png";
 import { useLocation, Link } from "react-router-dom";
+import LogoutButton from "./LogoutButton";
 
 export const NavBar = (props) => {
-  const {children, title} = props;
+  const { children, title } = props;
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
         <a className="navbar-brand" href="#">
-          <img src={education} alt="Bootstrap" width="30" height="24" style={{marginRight: "10px"}} />
+          <img
+            src={education}
+            alt="Bootstrap"
+            width="30"
+            height="24"
+            style={{ marginRight: "10px" }}
+          />
           {title}
         </a>
         {children}
@@ -21,7 +28,7 @@ export const MenuContent = () => {
   const location = useLocation();
   return (
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul className="navbar-nav">
+      <ul className="nav navbar-nav">
         <li className="nav-item">
           <Link
             className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
@@ -39,6 +46,9 @@ export const MenuContent = () => {
           >
             Students
           </Link>
+        </li>
+        <li className="nav-item">
+          <LogoutButton />
         </li>
       </ul>
     </div>

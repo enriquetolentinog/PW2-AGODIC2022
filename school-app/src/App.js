@@ -10,23 +10,33 @@ import Abuelo from "./pages/params/Abuelo";
 import Footer from "./components/Footer";
 import UpdateStudent from "./pages/students/Update";
 import LoginButton from "./components/LoginButton";
-import PrivateRoute from "./components/PrivateRoute";
+import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "./components/Loading";
 
 function App() {
+  const { isLoading, error } = useAuth0();
+
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <NavBar title="School App">
         <MenuContent />
       </NavBar>
-      <LoginButton />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/params" element={<Abuelo />} />
         <Route exact path="/students" element={<Students />} />{" "}
         {/** consulta todos */}
-        <PrivateRoute exact path="/students/:id" element={<StudentsInfo />} />{" "}
+        <Route exact path="/students/:id" element={<StudentsInfo />} />{" "}
         {/** consulta uno */}
-        <PrivateRoute exact path="/create/students" element={<StudentCreate />} />{" "}
+        <Route exact path="/create/students" element={<StudentCreate />} />{" "}
         {/** agregar uno */}
         <Route
           exact
@@ -35,7 +45,6 @@ function App() {
         />{" "}
         {/** agregar uno */}
       </Routes>
-      <Footer />
     </>
   );
 }
