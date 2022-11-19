@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const port = 3001;
 require('./src/models/connection');
+require('dotenv').config()
 
 const student_router = require('./src/routes/studentRouter');
 
@@ -15,6 +16,8 @@ app.get('/', (req, res) => {
 }); 
 
 app.use('/api',student_router);
+
+console.log(process.env.DOMAIN)
 
 app.listen(port, () => {
     console.log(`La aplicación se está ejecutando en el puerto: ${port}`)

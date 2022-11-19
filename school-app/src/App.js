@@ -12,6 +12,7 @@ import UpdateStudent from "./pages/students/Update";
 import LoginButton from "./components/LoginButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "./components/Loading";
+import Color from "./pages/Color";
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -44,6 +45,7 @@ function App() {
           element={<UpdateStudent />}
         />{" "}
         {/** agregar uno */}
+        <Route exact path="color" element={<Color />} />
       </Routes>
     </>
   );

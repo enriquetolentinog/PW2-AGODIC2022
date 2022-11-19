@@ -10,7 +10,7 @@ const Students = (props) => {
   useEffect(() => {
     async function fetchData() {
       const token = await getAccessTokenSilently();
-      //console.log(token);
+      console.log(token);
       const res = await getStudents(token);
       setStudents(res);
     }
